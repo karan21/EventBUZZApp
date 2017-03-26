@@ -149,4 +149,35 @@ public class HttpHelper {
         }
         return jsonResponse;
     }
+
+    public JSONObject getJsonObject(String location, String email, String token) {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpConnectionParams.setConnectionTimeout(httpClient.getParams(), 10000);
+        HttpGet httpGet = new HttpGet(domain + location);
+        HttpResponse httpResponse = null;
+        JSONObject jsonResponse = null;
+        try {
+            httpGet.setHeader("Accept", "application/json");
+            httpGet.setHeader("Content-type", "application/json");
+            httpGet.setHeader("X-User-Email", email);
+            httpGet.setHeader("X-User-Token", token);
+            httpResponse = httpClient.execute(httpGet);
+            if(httpResponse == null)
+                return null;
+            InputStream in = httpResponse.getEntity().getContent();
+            StringBuilder stringBuilder = new StringBuilder();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+            String line;
+            while((line = bufferedReader.readLine()) != null)
+                stringBuilder.append(line);
+            String response = stringBuilder.toString();
+            System.out.println(response);
+            jsonResponse = new JSONObject(response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonResponse;
+    }
 }

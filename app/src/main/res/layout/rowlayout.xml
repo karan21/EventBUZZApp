@@ -17,7 +17,7 @@
         android:layout_marginLeft="4px"
         android:layout_marginTop="4px"
         android:gravity="left"
-        android:src="http://192.168.43.23:3000/images/a.png" />
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/secondLine"

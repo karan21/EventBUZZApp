@@ -52,8 +52,11 @@ class MySimpleArrayAdapter extends ArrayAdapter<String> {
 
 
 public class MyListActivity extends ListActivity {
-    public static final String EXTRA_MESSAGE  = "com.example.karan.tryapp";
+    public static String EXTRA_MESSAGE = "com.example.karan.tryapp";
     private JSONArray events;
+    private ArrayList<String> eventTitle = new ArrayList<String>();
+    private ArrayList<String> eventDate = new ArrayList<String>();
+    private ArrayList<Integer> eventIds = new ArrayList<Integer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,20 +65,21 @@ public class MyListActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
+
         String item = (String) getListAdapter().getItem(position);
         Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(MyListActivity.this,DisplayEvent.class);
-        intent.putExtra(EXTRA_MESSAGE,item);
+        intent.putExtra(EXTRA_MESSAGE,eventIds.get(position).toString());
         startActivity(intent);
     }
 
     private void updateEvents(){
-        ArrayList<String> eventTitle = new ArrayList<String>();
-        ArrayList<String> eventDate = new ArrayList<String>();
+
 
 
         for(int i=0; i< events.length();i++){
             try {
+                eventIds.add((Integer) events.getJSONObject(i).get("id"));
                 eventTitle.add((String) events.getJSONObject(i).get("name"));
                 eventDate.add((String) events.getJSONObject(i).get("date")+ " at " + (String) events.getJSONObject(i).get("time"));
             }catch (JSONException e){
