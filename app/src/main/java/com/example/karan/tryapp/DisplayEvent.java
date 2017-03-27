@@ -30,10 +30,13 @@ public class DisplayEvent extends AppCompatActivity {
             String eventName = event.get("name").toString();
             String eventLocation = event.get("venue").toString();
             String eventDate = event.get("date").toString() + " at " +event.get("time").toString();
+            String eventDescription = event.get("description").toString();
             TextView location = (TextView) findViewById(R.id.location);
             location.setText(eventLocation);
             TextView date = (TextView) findViewById(R.id.date);
             date.setText(eventDate);
+            TextView description = (TextView) findViewById(R.id.description);
+            description.setText(eventDescription);
 
             System.out.println(eventName);
 
