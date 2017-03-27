@@ -20,14 +20,21 @@ public class DisplayEvent extends AppCompatActivity {
         Intent intent = getIntent();
         eventId = intent.getStringExtra(MyListActivity.EXTRA_MESSAGE);
         System.out.print(eventId);
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(eventId);
+//        TextView textView = (TextView) findViewById(R.id.textView);
+//        textView.setText(eventId);
         new GetEvent().execute();
 
     }
     private void  updateEvent(){
         try{
             String eventName = event.get("name").toString();
+            String eventLocation = event.get("venue").toString();
+            String eventDate = event.get("date").toString() + " at " +event.get("time").toString();
+            TextView location = (TextView) findViewById(R.id.location);
+            location.setText(eventLocation);
+            TextView date = (TextView) findViewById(R.id.date);
+            date.setText(eventDate);
+
             System.out.println(eventName);
 
         }catch (JSONException e){

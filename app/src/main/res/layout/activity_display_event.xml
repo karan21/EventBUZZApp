@@ -6,12 +6,51 @@
     android:layout_height="match_parent"
     tools:context="com.example.karan.tryapp.DisplayEvent">
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout android:layout_width="344dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="92dp" />
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+        
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0px"
+            android:layout_marginBottom="0px"
+            android:padding="0px"
+            android:maxHeight="180dp"
+            android:src="@drawable/event" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="0px"
+            android:paddingTop="0px">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:height="150dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.50"
+                android:id="@+id/location"
+                android:textSize="50px"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:height="150dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.50"
+                android:id="@+id/date"
+                android:textSize="50px"
+                android:background="@drawable/border"/>
+
+        </LinearLayout>
+        
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
